@@ -3,8 +3,6 @@ gnome = import('gnome')
 sources = [
   'gnome-screenshot.c',
 
-  'cheese-flash.c',
-
   'screenshot-application.c',
   'screenshot-area-selection.c',
   'screenshot-config.c',

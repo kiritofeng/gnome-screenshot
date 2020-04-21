@@ -32,7 +32,6 @@
 #include <X11/extensions/shape.h>
 #endif
 
-#include "cheese-flash.h"
 #include "screenshot-application.h"
 #include "screenshot-config.h"
 #include "screenshot-utils.h"
@@ -305,25 +304,6 @@ screenshot_play_sound_effect (const gchar *event_id,
     ca_proplist_destroy (p);
 }
 
-static void
-screenshot_fallback_fire_flash (GdkWindow *window,
-                                GdkRectangle *rectangle)
-{
-  GdkRectangle rect;
-  CheeseFlash *flash = NULL;
-
-  if (rectangle != NULL)
-    rect = *rectangle;
-  else
-    screenshot_fallback_get_window_rect_coords (window,
-                                                screenshot_config->include_border,
-                                                NULL,
-                                                &rect);
-
-  flash = cheese_flash_new ();
-  cheese_flash_fire (flash, &rect);
-}
-
 GdkWindow *
 do_find_current_window (void)
 {
@@ -579,8 +559,6 @@ screenshot_fallback_get_pixbuf (GdkRectangle *rectangle)
             }
         }
     }
-
-  screenshot_fallback_fire_flash (window, rectangle);
 
   return screenshot;
 }
