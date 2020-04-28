@@ -27,8 +27,6 @@
 
 #include "screenshot-config.h"
 
-#include "cheese-flash.h"
-
 #include <gdk/gdkx.h>
 
 #ifdef HAVE_X11_EXTENSIONS_SHAPE_H
@@ -274,22 +272,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       screenshot_coordinates_out->width = width;
       screenshot_coordinates_out->height = height;
     }
-}
-
-static void
-screenshot_fallback_fire_flash (GdkWindow *window,
-                                GdkRectangle *rectangle)
-{
-  GdkRectangle rect;
-  CheeseFlash *flash = NULL;
-
-  if (rectangle != NULL)
-    rect = *rectangle;
-  else
-    screenshot_fallback_get_window_rect_coords (window, NULL, &rect);
-
-  flash = cheese_flash_new ();
-  cheese_flash_fire (flash, &rect);
 }
 
 GdkWindow *
@@ -548,8 +530,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
             }
         }
     }
-
-  screenshot_fallback_fire_flash (window, rectangle);
 
   return screenshot;
 }
