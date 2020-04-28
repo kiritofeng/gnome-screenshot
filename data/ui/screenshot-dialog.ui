@@ -3,6 +3,7 @@
 <interface>
   <requires lib="gtk+" version="3.22"/>
   <template class="ScreenshotDialog" parent="GtkApplicationWindow">
+    <property name="resizable">False</property>
     <property name="window_position">center</property>
     <signal name="key-press-event" handler="key_press_cb"/>
     <child type="titlebar">
