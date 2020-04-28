@@ -1,6 +1,6 @@
 _pkgname=gnome-screenshot
 pkgname="${_pkgname}-kirito"
-pkgver=3.36.0
+pkgver=3.34.0+87+gbdce407
 pkgrel=1
 pkgdesc="Take pictures of your screen"
 url="https://github.com/kiritofeng/gnome-screenshot"
